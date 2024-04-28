@@ -1,27 +1,31 @@
 import random
 
-your_action = input("Either play a rock, paper or scissors. I chose: ")
+choices = ("rock", "paper", "scissors")
 
-available_actions = ["rock", "paper", "scissors"]
+playing = True
+while playing:
+    player_choice = None
+    computer_choice = random.choice(choices)
 
-comp_action = random.choice(available_actions)
+    while player_choice not in choices:
+        player_choice = input("Enter a choice, either rock, paper, or scissors:")
 
-print(f"You chose {your_action}, computer chose {comp_action}")
-if your_action == comp_action:
-    print(f"You chose {your_action} while computer chose {comp_action}, It's a TIE!")
-#for a tie sasa
-elif your_action == "rock":
-    if comp_action == "scissors":
-        print("Rock smashes scissors! You WIN!")
-else:
-    print("Paper covers Rock! You LOSE")
-elif your_action == "scissors":
-     if comp_action == "paper":
-        print("Scissors cuts paper! You WIN!")
-else:
-      print("Rock smashes Scissors, you LOSE!")
-elif your_action == "paper":
-if comp_action == "rock":
-    print("Paper covers Rock! You WIN!")
-else:
-    print("Scissors cuts paper! You LOSE!")
+    print(f"You chose: {player_choice}")
+    print(f"Computer chose: {computer_choice}")
+
+    if player_choice == computer_choice:
+        print("it's a Tie!")
+    elif player_choice == "rock" and computer_choice == "scissors":
+        print("You win!")
+    elif player_choice == "scissors" and computer_choice == "paper":
+        print("You win!")
+    elif player_choice == "paper" and computer_choice == "rock":
+        print("You win!")
+    else:
+        print("You lose!")
+
+    play_again = input("Do you want to play again? (y/n):").lower()
+    if not play_again == "y":
+        playing = False
+
+print("Thanks for playing!")
